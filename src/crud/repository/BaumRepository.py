@@ -1,3 +1,5 @@
+from typing import Any
+from ast import Dict
 from crud.entity.Baum import Baum
 from crud.repository.db import baeume
 from loguru import logger
@@ -36,3 +38,14 @@ class BaumRepository:
     def get_all(self) -> list[Baum]:
         logger.info("Get all baeume")
         return self.baeume
+    
+    def get_with_query(self,query: Dict[str,Any]) -> list[Baum]:
+        logger.info(f"Get baeume with query: {query}")
+        result = []
+        for baum in self.baeume:
+            for key, value in query.items():
+                if getattr(baum, key) == value:
+                    result.append(baum)
+                else:
+                    break
+        return result

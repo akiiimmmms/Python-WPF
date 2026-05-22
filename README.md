@@ -75,6 +75,7 @@ Alle Endpunkte werden unter `http://127.0.0.1:8000` bereitgestellt.
 |---------|---------------|----------------------------------|----------------|
 | GET     | `/baum`       | Gibt eine Liste aller Bäume zurück | |
 | GET     | `/baum/{id}`  | Gibt den Baum mit der angegebenen ID | |
+| GET     | `/baum?query` | Gibt Bäume mit den angegebenen Parametern zurück |
 | POST    | `/baum`       | Erstellt einen neuen Baum (Body = JSON) | |
 | PUT     | `/baum/{id}`  | Aktualisiert den Baum mit der ID | |
 | DELETE  | `/baum/{id}`  | Löscht den Baum mit der ID | |
