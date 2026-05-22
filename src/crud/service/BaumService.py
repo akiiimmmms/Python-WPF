@@ -20,9 +20,10 @@ class BaumService:
 
     def update_by_id(self, id: int, baum: Baum) -> None:
         logger.info(f"Update baum by id: {id}")
-        baum = self.baum_repository.get(id)
-        if baum is None:
+        existing_baum = self.baum_repository.get(id)
+        if existing_baum is None:
             raise NotFoundException(id)
+        baum.set(id=id)
         self.baum_repository.update(baum)
 
     def delete_by_id(self, id: int) -> None:

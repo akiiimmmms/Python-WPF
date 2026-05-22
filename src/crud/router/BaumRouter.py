@@ -17,8 +17,20 @@ def get_all(service: Annotated[BaumService, Depends(get_service)]):
 def get_by_id(id: int, service: Annotated[BaumService, Depends(get_service)]):
     logger.info(f"Get baum by id: {id}")
     return service.get_by_id(id)
+
 @baum_router.post("", status_code=201)
 def add(baum: BaumModel, service: Annotated[BaumService, Depends(get_service)]) -> int:
     logger.info(f"Add baum: {baum}")
     return service.add(baum.to_entity())
+
+@baum_router.put("/{id}", status_code=204)
+def update(id: int, baum: BaumModel, service: Annotated[BaumService, Depends(get_service)]) -> None:
+    logger.info(f"Update baum: {baum}")
+    service.update_by_id(id, baum.to_entity())
+
+@baum_router.delete("/{id}", status_code=204)
+def delete(id: int, service: Annotated[BaumService, Depends(get_service)]) -> None:
+    logger.info(f"Delete baum by id: {id}")
+    service.delete_by_id(id)
+
 

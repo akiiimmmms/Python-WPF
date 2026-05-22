@@ -19,8 +19,8 @@ class BaumRepository:
                 return baum
         return None
 
-    def update(self, updated_baum: Baum) -> None:
-        logger.info(f"Update baum by id: {updated_baum}")
+    def update(self,updated_baum: Baum) -> None:
+        logger.info(f"Update baum by id: {updated_baum.id}")
         for i, baum in enumerate(self.baeume):
             if baum.id == updated_baum.id:
                 self.baeume[i] = updated_baum
