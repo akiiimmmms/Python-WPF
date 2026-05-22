@@ -55,5 +55,46 @@ uvicorn crud.__main__:app --reload
 ## API Dokumentation
 
 Nach dem Start ist die interaktive API-Dokumentation (Swagger UI) unter folgender Adresse erreichbar:
-- **Swagger UI**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-- **ReDoc**: [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
+- **Swagger UI**: http://127.0.0.1:8000/docs
+- **ReDoc**: http://127.0.0.1:8000/redoc
+
+## API Endpunkte
+
+Alle Endpunkte werden unter `http://127.0.0.1:8000` bereitgestellt.
+
+### Health‑Check
+| Methode | Pfad      | Beschreibung                |
+|---------|-----------|----------------------------|
+| GET     | `/health` | Liefert `{ "status": "ok" }` |
+
+
+
+### Baum‑Ressource (`/baum`)
+
+| Methode | Pfad          | Beschreibung                     | Beispiel‑cURL |
+|---------|---------------|----------------------------------|----------------|
+| GET     | `/baum`       | Gibt eine Liste aller Bäume zurück | |
+| GET     | `/baum/{id}`  | Gibt den Baum mit der angegebenen ID | |
+| POST    | `/baum`       | Erstellt einen neuen Baum (Body = JSON) | |
+| PUT     | `/baum/{id}`  | Aktualisiert den Baum mit der ID | |
+| DELETE  | `/baum/{id}`  | Löscht den Baum mit der ID | |
+
+> **Hinweis**: Der JSON‑Body muss dem Schema von `BaumModel` entsprechen:
+> ```json
+> {
+>   "id": 1,
+>   "name": "Eiche",
+>   "ast": {
+>     "id": 1,
+>     "name": "Ast1",
+>     "blatt": {
+>       "id": 1,
+>       "farbe": "Grün"
+>     }
+>   }
+> }
+> ```
+
+## Lizenz
+
+MIT Lizenz
