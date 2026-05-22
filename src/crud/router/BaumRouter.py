@@ -1,8 +1,5 @@
 from typing import Final
 from fastapi import Request
-from urllib import request
-from typing import Any
-from ast import Dict
 from crud.router.BaumModel import BaumModel
 from crud.router.dependencies import get_service
 from fastapi import Depends, APIRouter
