@@ -32,17 +32,24 @@ poetry install
 
 ## Server starten
 
-Starten Sie den Entwicklungsserver mit Uvicorn:
+Starten Sie den Entwicklungsserver:
 
-### Mit uv
+### Mit uv (empfohlen)
+Durch das in `pyproject.toml` definierte Skript:
 ```bash
-uv run uvicorn src.main:app --reload
+uv run start-server
+```
+
+### Alternativ (Entwicklungsmodus mit Live-Reload)
+Wenn Sie Änderungen im Code machen und der Server automatisch neu starten soll:
+```bash
+uv run uvicorn crud.__main__:app --reload
 ```
 
 ### Ohne uv
 Aktivieren Sie Ihre virtuelle Umgebung und führen Sie aus:
 ```bash
-uvicorn src.main:app --reload
+uvicorn crud.__main__:app --reload
 ```
 
 ## API Dokumentation

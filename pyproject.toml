@@ -12,6 +12,10 @@ dependencies = [
     "sqlite3; python_version < '3.0'", # SQLite ist in Python standardmäßig enthalten, aber gut zu erwähnen
 ]
 
+[project.scripts]
+start-server = "crud.__main__:run"
+
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
