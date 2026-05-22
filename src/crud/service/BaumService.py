@@ -1,6 +1,6 @@
-from typing import Any
+
 from ast import Dict
-from crud.service import NotFoundException
+from crud.service.NotFoundException import NotFoundException
 from crud.repository.BaumRepository import BaumRepository
 from crud.entity.Baum import Baum
 from loguru import logger
@@ -13,7 +13,7 @@ class BaumService:
         logger.info(f"Add baum: {baum}")
         return self.baum_repository.add(baum)
 
-    def get_by_id(self, id: int) -> Baum:
+    def get_by_id(self, id: int) -> Baum | None:
         logger.info(f"Get baum by id: {id}")
         baum = self.baum_repository.get(id)
         if baum is None:
@@ -38,6 +38,7 @@ class BaumService:
     def get_all(self) -> list[Baum]:
         logger.info("Get all baeume")
         return self.baum_repository.get_all()
+    
     def get(self, query: Dict[str, str]) -> list[Baum]:
         logger.info(f"Get baeume with query: {query}")
         if query.keys() == "":
