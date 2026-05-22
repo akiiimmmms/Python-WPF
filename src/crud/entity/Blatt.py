@@ -1,6 +1,5 @@
-from crud.entity.Ast import Ast
+
 class Blatt:
-    def __init__(self, id: int, farbe: str, ast: Ast):
+    def __init__(self, id: int, farbe: str):
         self.id = id
         self.farbe = farbe
-        self.ast = ast
